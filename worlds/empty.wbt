@@ -1,0 +1,20 @@
+#VRML_SIM R2020b utf8
+WorldInfo {
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  orientation 0.6859135074333956 -0.7170961814883344 -0.12367589423677827 3.3894360048673438
+  position -0.0287336380945553 0.5267851433887794 -0.7455165224527233
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+CircleArena {
+  wallThickness 0.1
+}
+Legged2 {
+  translation 0 0.202 0
+  rotation 1 0 0 0.09
+  controller "legged2_controller"
+}
