@@ -3,8 +3,8 @@ WorldInfo {
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation 0.6859135074333956 -0.7170961814883344 -0.12367589423677827 3.3894360048673438
-  position -0.0287336380945553 0.5267851433887794 -0.7455165224527233
+  orientation -0.002148504012743852 -0.9918537311003134 -0.12736388826074094 3.209539103038649
+  position 0.20639516110141803 0.38669014074368924 -1.2066721406088308
 }
 TexturedBackground {
 }
@@ -14,7 +14,6 @@ CircleArena {
   wallThickness 0.1
 }
 Legged2 {
-  translation 0 0.202 0
-  rotation 1 0 0 0.09
+  translation 0 0.21 0
   controller "legged2_controller"
 }

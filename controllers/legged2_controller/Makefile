@@ -40,7 +40,7 @@
 ### ---- C++ Sources ----
 ### if your program uses several C++ source files:
 ### CXX_SOURCES = my_plugin.cc my_clever_algo.cpp my_graphics.c++
-CXX_SOURCES = utils.cpp legged2_controller.cpp arm.cpp
+CXX_SOURCES = utils.cpp legged2_controller.cpp arm.cpp leg.cpp walk_leg.cpp
 ### ---- Compilation options ----
 ### if special compilation flags are necessary:
 ### CFLAGS = -Wno-unused-result

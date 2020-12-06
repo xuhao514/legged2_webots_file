@@ -4,9 +4,7 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "D:\\ProgramFile\\Webots\\include\\controller\\cpp\\**",
-                "F:\\Files\\boost_1_66_0\\**",
-                "F:\\Files\\boost_1_66_0\\boost\\**"
+                "D:\\ProgramFile\\Webots\\include\\controller\\cpp\\**"
             ],
             "defines": [
                 "_DEBUG",

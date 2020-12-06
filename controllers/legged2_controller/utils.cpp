@@ -98,3 +98,12 @@ bool isNan(double x)
 {
     return x != x;
 }
+
+float constrainValue(float _val,float _min,float _max)
+{
+  if(_val>_max)
+       return _max;
+  else if(_val<_min)
+       return _min;
+  else return _val;
+}
