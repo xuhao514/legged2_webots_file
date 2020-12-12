@@ -1,5 +1,5 @@
 Webots Proto Cache File version 1.5
-protoFileHash: a6ffe3279461dae5ff7ba97c57d9e8ff
+protoFileHash: 9cc98dee7d3e3deda511898c37424b6b
 needsRobotAncestor: 1
 baseType: Robot
 slotType: 
@@ -8,4 +8,4 @@ tags:
 license:  Apache License 2.0
 licenseUrl:  http://www.apache.org/licenses/LICENSE-2.0
 documentationUrl: 
-info: This\sis\sa\sproto\sfile\sfor\sWebots\sfor\sthe\sLegged2\nExtracted\sfrom:\sG:\\���������\\С˫��\\ģ��\\legged2\\urdf\\legged2.urdf\n
+info: This\sis\sa\sproto\sfile\sfor\sWebots\sfor\sthe\sLeftLeg\nExtracted\sfrom:\sG:\\����������\\С˫��\\ģ��\\left_leg\\urdf\\left_leg.urdf\n

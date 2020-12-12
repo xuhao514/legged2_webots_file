@@ -35,6 +35,16 @@ struct LegAng
 {
   float c1,c2,c3,c4,c5;
 };
+//三维坐标
+struct Pos
+{
+	float x,y,z;
+};
+//加速度
+struct Accel
+{
+	float ax,ay,az;
+};
 //值的范围
 class ValueRang
 {

@@ -15,7 +15,7 @@ public:
     void setJointAng(float _c1,float _c2,float _c3,float _c4,float _c5);
     //设定关节弧度 并限定角度范围
     void setJointrRad(float _c1,float _c2,float _c3,float _c4,float _c5);
-    //设定末端坐标  m  弧度   flase为无解
+    //设定末端坐标  m  弧度   flase为无解  x:竖直 y:侧向 正朝里 z:前方 正朝后  P:前后转(抬腿) 正逆时针  Y:左右转（侧向） 正：身体向外
     bool setPos(float _x,float _y,float _z,float _P,float _Y);
     //设定速度运动到目标位置 _use_t_long:移动使用时长/ms：
     void moveToPos(float _target_x,float _target_y,float _target_z,float _target_P,float _target_Y,float _use_t_long);
@@ -36,13 +36,16 @@ public:
      float get_c3_relative(bool _ang=true){if(_ang) return (c3-c30)*180/my_pi;else return (c3-c30);};
      float get_c4_relative(bool _ang=true){if(_ang) return (c4-c40)*180/my_pi;else return (c4-c40);};
      float get_c5_relative(bool _ang=true){if(_ang) return (c5-c50)*180/my_pi;else return (c5-c50);};
-     //获取坐标  m
-     float get_x(){return x;};
-     float get_y(){return y;};
-     float get_z(){return z;};
+     ////高度 m
+     float get_x(){return x;};   
+     //侧向 m
+     float get_y(){return y;};   
+     //前向   m
+     float get_z(){return z;};  
      float get_R(){return R;};
      float get_P(){return P;};
      float get_Y(){return Y;};
+     
      // 设定关节转动角度范围  度
      void set_c1_rang(float _min,float _max){c1_rang.min =_min; c1_rang.max =_max; };
      void set_c2_rang(float _min,float _max){c2_rang.min =_min; c2_rang.max =_max; };

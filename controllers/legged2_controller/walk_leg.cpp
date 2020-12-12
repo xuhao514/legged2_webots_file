@@ -29,6 +29,9 @@ void WalkLegClass::init(Leg &_leg,float _x0,float _y0,float _z0,float _L,float _
      walk_leg_state.walking = false;
      walk_leg_state.in_air_else_floor = false;
      walk_leg_state.start_act =false;
+     walk_leg_state.scale_in_T = start_scale_pos;
+     pid_balance.pidInit(1,120,0.01,0,0.01,50);
+     rpy_set.R = rpy_set.P = rpy_set.Y = 0;
 }
 
 void WalkLegClass::move2InitPos(float _use_t_long=1000)
@@ -42,7 +45,8 @@ void WalkLegClass::move2InitPos(float _use_t_long=1000)
 void WalkLegClass::update(float _dt)
 {
     calTnNow(_dt);
-    leg->update(_dt);
+    
+    pidUpdate();
     walk_leg_state.x=leg->get_x()*1000;
     walk_leg_state.y=leg->get_y()*1000;
 }
@@ -61,6 +65,7 @@ void WalkLegClass::calTnNow(float _dt)
 
     if(walk_leg_state.in_delay)
     {
+        walk_leg_state.walking = true;
         cal_param.delay_t-=_dt;
         if(cal_param.delay_t<=0) walk_leg_state.in_delay = false;
         return;
@@ -87,9 +92,11 @@ void WalkLegClass::calTnNow(float _dt)
     else fixPointFlag=false;
 
     walk_leg_state.walking = true;
+    walk_leg_state.scale_in_T = cal_param.tn_now / cal_param.T_now;
+    
     calPos(cal_param.tn_now);
     printf("xyz %f %f %f\n",x,y,z);
-    leg->setPos(x/1000,y/1000,z/1000,0,0);
+    leg->setPos(x/1000,y/1000,z/1000,rpy_set.P,rpy_set.Y);
 }
 
 void WalkLegClass::calPos(float _t_now)
@@ -98,17 +105,16 @@ void WalkLegClass::calPos(float _t_now)
     {
         walk_leg_state.in_air_else_floor = true;
         Bezier(&z,&x,wx12,wy12,bezier_len,_t_now/t_air);
+        walk_leg_state.scale_in_tair = _t_now/t_air; 
     }
     else if(_t_now<=t_floor+t_air)    //直线段
     {
         walk_leg_state.in_air_else_floor = false;
-
         Bezier(&z,&x,wx2,wy2,2,(_t_now-t_air)/t_floor);	    //均匀的直线
+        walk_leg_state.scale_in_tfloor = (_t_now-t_air)/t_floor;
     }
 
    //if(alp!=0) Rotate(&x,&y,L5/2,0,forward*alp);  //围绕腿的原点旋转
-
-   walk_leg_state.tn = _t_now;
 }
 
 void WalkLegClass::startAct(bool _start)
@@ -187,4 +193,12 @@ void WalkLegClass::setBezier(float _x0,float _y0,float _L,float _H0,float _tair_
         }
         wx2[0]=-wx2[0];  wx2[1]=-wx2[1];
     }
+}
+
+//是要让重心在腿的支撑范围内
+void WalkLegClass::pidUpdate()
+{
+//   float _inc =  pid_balance.pidIncUpdate(0,body_rpy->P);
+//   y+=_inc;
+//    printf("body_rpy->P:%f  leg_y:%f inc:%f \n",body_rpy->P,y,_inc);
 }

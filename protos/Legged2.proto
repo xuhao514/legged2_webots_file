@@ -2,7 +2,7 @@
 # license: Apache License 2.0
 # license url: http://www.apache.org/licenses/LICENSE-2.0
 # This is a proto file for Webots for the Legged2
-# Extracted from: G:\ËÄ×ã»úÆ÷ÈË\Ð¡Ë«×ã\Ä£ÐÍ\legged2\urdf\legged2.urdf
+# Extracted from: G:\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\Ð¡Ë«ï¿½ï¿½\Ä£ï¿½ï¿½\legged2\urdf\legged2.urdf
 
 PROTO Legged2 [
   field  SFVec3f     translation     0 0 0
@@ -26,6 +26,41 @@ PROTO Legged2 [
     synchronization IS synchronization
     selfCollision IS selfCollision
     children [
+      Accelerometer {
+      translation 0 0.0 0
+      children [
+        Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.8 0.0627451 0.2
+            }
+          }
+          geometry Capsule {
+            height 0.002
+            radius 0.005
+          }
+        }
+      ]
+    }
+    InertialUnit {
+      children [
+        Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.0392157 0.0156863 0.8
+            }
+          }
+          geometry Cylinder {
+            height 0.001
+            radius 0.01
+          }
+        }
+      ]
+      name "imu"
+     }
+     GPS {
+      name "gps_body"
+     }
       Shape {
         appearance DEF ma1 PBRAppearance {
           baseColor 0.968627 0.878431 0.600000
